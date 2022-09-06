@@ -4,18 +4,15 @@ inputList = input.split()
 def longestCommonPrefix(strs):
     prefix = ''
 
-    for i in range(len(strs)):
-        for j in range(len(strs[i])):
-            if (i < len(strs)-1 and strs[i][j] == strs[i+1][j]):
-                print("i: "+str(i))
-                print("j: "+str(j))
-                curr = ''
+    for i in range(len(strs)-1):
+        curr = ''
+        for j in range(min(len(strs[i]), len(strs[i+1]))):
+            if (strs[i][j] == strs[i+1][j]):
                 curr += strs[i][j]
-                if curr not in prefix:
-                    prefix += curr
-                    print(prefix)
+            prefix = curr
 
-    print(prefix)
+    print("lcp: "+prefix)
+    return prefix
 
 longestCommonPrefix(inputList)
 	
