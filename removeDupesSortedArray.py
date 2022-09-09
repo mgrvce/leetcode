@@ -5,7 +5,11 @@ def removeDupes(nums):
     if not nums:
         return 0
 
-    seen = list(set(nums))
+    seen = []
+
+    for i in range(len(nums)):
+        if nums[i] not in seen:
+            seen.append(nums[i])
 
     for i in range(len(seen)):
         nums[i] = seen[i]
