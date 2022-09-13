@@ -33,33 +33,46 @@ def addTwo(l1, l2):
     l1 = l1.next
     l2 = l2.next
 
-    while l1 and l2:
-        val = l1.val +l2.val
-        print("curr val: "+str(val))
-        if carry:
-            val = val + 1
-            print("carry 1: "+ str(val))
-            carry = False
-        if 10 <= val:
-            carry = True
-            val = val - 10
-            print("new val: "+str(val))
-        tail.next = ListNode(val)
-        l1 = l1.next
-        l2 = l2.next
-        tail = tail.next
+    while l1 or l2:
+        if l1 and l2:
+            val = l1.val +l2.val
+            print("curr val: "+str(val))
+            if carry:
+                val = val + 1
+                print("carry 1: "+ str(val))
+                carry = False
+            if 10 <= val:
+                carry = True
+                val = val - 10
+                print("new val: "+str(val))
+            tail.next = ListNode(val)
+            l1 = l1.next
+            l2 = l2.next
+            tail = tail.next
+        if l1 and not l2:
+            if carry:
+                val = l1.val + 1
+                carry = False
+            if 10 <= val:
+                carry = True
+                val = val - 10
+            tail.next = ListNode(val) 
+            l1 = l1.next
+            tail = tail.next
+        if l2 and not l1:
+            if carry:
+                val = l2.val + 1
+                carry = False
+            if 10 <= val:
+                carry = True
+                val = val - 10
+            tail.next = ListNode(val) 
+            l2 = l2.next
+            tail = tail.next
     
-    if l1:
-        if carry:
-            tail.next = ListNode(l1.val + 1, l1.next)
-        tail.next = (l1)
-        print("l1")
-    elif l2:
-        if carry:
-            tail.next = ListNode(l2.val + 1, l2.next)
-        tail.next = (l2)
-        tail.next = l2.next
-        print("l2")
+    if carry:
+        tail.next = ListNode(1)
+    
 
     return head
 
