@@ -23,9 +23,10 @@ def addTwo(l1, l2):
 
     val = l1.val +l2.val
     carry = False
-    if val > 10:
+    if 10 <= val:
         carry = True
         val = val - 10
+        print(val)
 
     head = ListNode(val)
     tail = head
@@ -34,15 +35,17 @@ def addTwo(l1, l2):
 
     while l1 and l2:
         val = l1.val +l2.val
+        print("curr val: "+str(val))
         if carry:
             val = val + 1
             carry = False
-        elif val > 10:
+        elif 10 <= val:
             carry = True
             val = val - 10
         tail.next = ListNode(val)
         l1 = l1.next
         l2 = l2.next
+        tail = tail.next
     
     if l1:
         tail.next = l1.next
@@ -52,9 +55,12 @@ def addTwo(l1, l2):
         return head
 
 
-printLL(List1)
-printLL(List2)
-# printLL(List3)
-# printLL(List4)
-printLL(addTwo(List1, List2))
-# printLL(addTwo(List3, List4))
+# test 1
+# printLL(List1)
+# printLL(List2)
+# printLL(addTwo(List1, List2))
+
+# test 2
+printLL(List3)
+printLL(List4)
+printLL(addTwo(List3, List4))
