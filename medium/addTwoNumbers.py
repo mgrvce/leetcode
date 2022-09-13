@@ -38,21 +38,30 @@ def addTwo(l1, l2):
         print("curr val: "+str(val))
         if carry:
             val = val + 1
+            print("carry 1: "+ str(val))
             carry = False
-        elif 10 <= val:
+        if 10 <= val:
             carry = True
             val = val - 10
+            print("new val: "+str(val))
         tail.next = ListNode(val)
         l1 = l1.next
         l2 = l2.next
         tail = tail.next
     
     if l1:
-        tail.next = l1.next
+        if carry:
+            tail.next = ListNode(l1.val + 1, l1.next)
+        tail.next = (l1)
+        print("l1")
     elif l2:
+        if carry:
+            tail.next = ListNode(l2.val + 1, l2.next)
+        tail.next = (l2)
         tail.next = l2.next
-    else:
-        return head
+        print("l2")
+
+    return head
 
 
 # test 1
