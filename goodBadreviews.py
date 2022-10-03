@@ -15,9 +15,6 @@ def goodOrBad(reviews, goodWords, badWords):
                 good += 1
             elif words[j] in badWords:
                 bad += 1
-        print("index: "+str(i))
-        print(good)
-        print(bad)
         if good < bad:
             sol.append("bad")
         elif bad < good:
